@@ -1,6 +1,11 @@
 // Copyright 1998-2015 Epic Games, Inc. All Rights Reserved.
 
-#include "AndroidFlurryPrivatePCH.h"
+#include "AndroidFlurry.h"
+#include "AndroidFlurryProvider.h"
+
+#include "Android/AndroidJNI.h"
+#include "AndroidApplication.h"
+#include "AndroidJava.h"
 
 DEFINE_LOG_CATEGORY_STATIC(LogAnalytics, Display, All);
 
@@ -239,11 +244,23 @@ void FAnalyticsProviderFlurry::SetLocation(const FString& InLocation)
 
 	double Latitude = FCString::Atod(*Lat);
 	double Longitude = FCString::Atod(*Long);
-
+/*
 	dispatch_async(dispatch_get_main_queue(), ^{
 		[Flurry setLatitude:Latitude longitude:Longitude horizontalAccuracy:0.0 verticalAccuracy:0.0];
 	});
+	*/
+	/*
+	new Thread(new Runnable() {
+		@Override
+		public void run() {
+			CALL_FLURRY_OBJECT(setLatitude, Latitude, Longitude);
+			;
+		}
+	}).start();
+*/
 
+	jstringWrapper LatWrap(Lat), LongWrap(Long);
+	CALL_FLURRY_OBJECT(setLocation, Latitude, Longitude, 0.0, 0.0);
 	UE_LOG(LogAnalytics, Display, TEXT("Parsed \"lat, long\" string in AndroidFlurry::SetLocation(%s) as \"%f, %f\""), *InLocation, Latitude, Longitude);
 #else
 	UE_LOG(LogAnalytics, Warning, TEXT("WITH_FLURRY=0. Are you missing the SDK?"));

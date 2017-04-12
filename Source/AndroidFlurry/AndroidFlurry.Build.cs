@@ -1,4 +1,4 @@
-// Copyright 1998-2015 Epic Games, Inc. All Rights Reserved.
+// Copyright 1998-2017 Sibirianit. All Rights Reserved.
 
 using System.IO;
 
@@ -7,7 +7,7 @@ namespace UnrealBuildTool.Rules
 	public class AndroidFlurry : ModuleRules
 	{
         public AndroidFlurry(TargetInfo Target)
-		{
+		{	
 			PublicDependencyModuleNames.AddRange(
 				new string[]
 				{
@@ -35,6 +35,7 @@ namespace UnrealBuildTool.Rules
 
             string PluginPath = Utils.MakePathRelativeTo(ModuleDirectory, BuildConfiguration.RelativeEnginePath);
             AdditionalPropertiesForReceipt.Add(new ReceiptProperty("AndroidPlugin", Path.Combine(PluginPath, "AndroidFlurry_APL.xml")));
+			Definitions.Add("WITH_FLURRY=1");
         }
 	}
 }

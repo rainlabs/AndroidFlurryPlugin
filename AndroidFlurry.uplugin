@@ -1,23 +1,30 @@
 {
 	"FileVersion" : 3,
-	
-	"FriendlyName" : "Android Flurry Analytics Provider",
 	"Version" : 1,
 	"VersionName" : "1.0",
-	"CreatedBy" : "Kokku Games Ltda.",
-	"CreatedByURL" : "http://www.kokkugames.com",
-	"DocsURL" : "",
-	"EngineVersion" : "4.8.0",
-	"Description" : "Flurry Analytics Provider for Android",
+	"FriendlyName" : "Android Flurry Analytics Provider",
+	"Description" : "Android Flurry Analytics Provider",
 	"Category" : "Analytics",
-	
+	"CreatedBy" : "Sibirianit, Ltd.",
+	"CreatedByURL" : "http://sibirianit.com",
+	"DocsURL" : "https://github.com/rainlabs/AndroidFlurryPlugin",
+	"MarketplaceURL" : "",
+	"SupportURL" : "",
+	"EngineVersion" : "4.15.0",
+	"EnabledByDefault" : false,
+	"CanContainContent" : false,
+	"IsBetaVersion" : true,
+	"Installed" : false,
 	"Modules" :
 	[
 		{
 			"Name" : "AndroidFlurry",
 			"Type" : "Runtime",
 			"LoadingPhase" : "PreDefault",
-			"WhitelistPlatforms" : [ "Android" ]
+			"WhitelistPlatforms" :
+			[
+				"Android"
+			]
 		}
 	]
 }
